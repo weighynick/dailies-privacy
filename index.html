@@ -42,15 +42,15 @@ data is described in the <a href="https://policies.google.com/privacy">Google Pr
 
 <h2>What the API Client accesses</h2>
 <p>The API Client requests a single OAuth scope,
-<code>https://www.googleapis.com/auth/youtube.upload</code>, and calls exactly two endpoints:</p>
+<code>https://www.googleapis.com/auth/youtube.upload</code>, and calls exactly one endpoint:</p>
 <ul>
   <li><code>videos.insert</code> — uploads a video file rendered locally by the Operator, together
       with its title, description and tags. Twice per day, once per channel.</li>
-  <li><code>channels.list</code> with <code>mine=true</code> — reads only the ID and title of the
-      authorized channel. Because both of the Operator's channels sit under one Google Account,
-      the API Client verifies before every upload that the authorized channel is the intended one,
-      and aborts if it is not.</li>
 </ul>
+<p>The only YouTube data the API Client ever receives is the response to its own upload, which
+identifies the video just created and the channel it was posted to. Because both of the Operator's
+channels sit under one Google Account, the API Client records that channel ID and refuses any
+later upload that would land on a different channel than the one expected.</p>
 <p>The API Client does not read, display, download, store or process YouTube content, channels,
 playlists, comments, or analytics belonging to anyone else. It does not use YouTube data to build
 or enrich any profile, dataset or model.</p>
@@ -60,8 +60,8 @@ or enrich any profile, dataset or model.</p>
 <ul>
   <li>An OAuth <strong>refresh token</strong> and access token per channel, used to authenticate
       subsequent uploads without repeating the consent flow.</li>
-  <li>The <strong>channel ID and channel title</strong> returned by <code>channels.list</code>,
-      used solely for the safety check described above.</li>
+  <li>The <strong>channel ID</strong> returned by the upload response, used solely for the safety
+      check described above.</li>
   <li>A local log of which video files have already been uploaded, so that a repeated run does not
       publish the same video twice.</li>
 </ul>
