@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — AI Dailies Uploader</title>
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    max-width: 46rem;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem 5rem;
+    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  h1 { font-size: 1.75rem; margin-bottom: .25rem; }
+  h2 { font-size: 1.15rem; margin-top: 2.25rem; }
+  .meta { opacity: .7; font-size: .9rem; margin-top: 0; }
+  ul { padding-left: 1.25rem; }
+  li { margin: .4rem 0; }
+  code { font-size: .9em; padding: .1em .35em; border-radius: 3px; background: rgba(127,127,127,.18); }
+  footer { margin-top: 3rem; padding-top: 1.25rem; border-top: 1px solid rgba(127,127,127,.3); font-size: .9rem; opacity: .8; }
+</style>
+</head>
+<body>
+
+<h1>Privacy Policy — AI Dailies Uploader</h1>
+<p class="meta">Last updated: 27 July 2026</p>
+
+<p><strong>AI Dailies Uploader</strong> (the "API Client") is a personal command-line script,
+operated by <strong>PEZET Nicolas</strong> (the "Operator"), that uploads videos the Operator
+has produced to YouTube channels the Operator owns.</p>
+
+<p>The API Client is not a product, not a service, and is not distributed. It runs locally on the
+Operator's own computer and has exactly one user: the Operator. It has no sign-up, no hosted
+interface, and no way for any other person to use it or to submit data to it. Consequently, this
+policy describes the handling of the Operator's own data only.</p>
+
+<h2>YouTube API Services</h2>
+<p>The API Client uses <strong>YouTube API Services</strong>. By using it, the Operator is bound by
+the <a href="https://www.youtube.com/t/terms">YouTube Terms of Service</a>. Google's handling of
+data is described in the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.</p>
+
+<h2>What the API Client accesses</h2>
+<p>The API Client requests a single OAuth scope,
+<code>https://www.googleapis.com/auth/youtube.upload</code>, and calls exactly two endpoints:</p>
+<ul>
+  <li><code>videos.insert</code> — uploads a video file rendered locally by the Operator, together
+      with its title, description and tags. Twice per day, once per channel.</li>
+  <li><code>channels.list</code> with <code>mine=true</code> — reads only the ID and title of the
+      authorized channel. Because both of the Operator's channels sit under one Google Account,
+      the API Client verifies before every upload that the authorized channel is the intended one,
+      and aborts if it is not.</li>
+</ul>
+<p>The API Client does not read, display, download, store or process YouTube content, channels,
+playlists, comments, or analytics belonging to anyone else. It does not use YouTube data to build
+or enrich any profile, dataset or model.</p>
+
+<h2>What is stored, and where</h2>
+<p>The following is written to the Operator's local filesystem and nowhere else:</p>
+<ul>
+  <li>An OAuth <strong>refresh token</strong> and access token per channel, used to authenticate
+      subsequent uploads without repeating the consent flow.</li>
+  <li>The <strong>channel ID and channel title</strong> returned by <code>channels.list</code>,
+      used solely for the safety check described above.</li>
+  <li>A local log of which video files have already been uploaded, so that a repeated run does not
+      publish the same video twice.</li>
+</ul>
+<p>No server, database or third-party service is involved. Nothing is transmitted anywhere except
+directly to Google's API endpoints over HTTPS in order to perform the upload.</p>
+
+<h2>Sharing and sale of data</h2>
+<p>No data of any kind is shared with, sold to, or disclosed to any third party. There are no
+analytics, no advertising, no tracking, and no third-party SDKs.</p>
+
+<h2>Retention and deletion</h2>
+<p>Stored tokens remain valid until the Operator revokes them or deletes the local token files.
+Deleting those files removes all authorization data held by the API Client. Uploaded videos remain
+on YouTube under the Operator's control and can be deleted from YouTube at any time.</p>
+
+<h2>Revoking access</h2>
+<p>Authorization granted to the API Client can be revoked at any time at
+<a href="https://myaccount.google.com/permissions">https://myaccount.google.com/permissions</a>.
+Revocation immediately and permanently prevents any further API access.</p>
+
+<h2>Children</h2>
+<p>The API Client has no users other than the Operator and is not directed at children.</p>
+
+<h2>Changes to this policy</h2>
+<p>Any change to this policy will be published on this page with an updated revision date.</p>
+
+<h2>Contact</h2>
+<p>Questions about this policy: <strong>weighynick@gmail.com</strong></p>
+
+<footer>
+  This page is published solely to satisfy the privacy policy requirement of the YouTube API
+  Services — Audit and Quota Extension Form.
+</footer>
+
+</body>
+</html>
