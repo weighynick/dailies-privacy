@@ -24,7 +24,7 @@
 <body>
 
 <h1>Privacy Policy — AI Dailies Uploader</h1>
-<p class="meta">Last updated: 28 July 2026</p>
+<p class="meta">Last updated: 10 August 2026</p>
 
 <p><strong>AI Dailies Uploader</strong> (the "API Client") is a personal command-line script,
 operated by <strong>PEZET Nicolas</strong> (the "Operator"), that uploads videos the Operator
@@ -45,10 +45,11 @@ data is described in the <a href="https://policies.google.com/privacy">Google Pr
 <code>https://www.googleapis.com/auth/youtube.upload</code>, and calls exactly one endpoint:</p>
 <ul>
   <li><code>videos.insert</code> — uploads a video file rendered locally by the Operator, together
-      with its title, description and tags. Twice per day, once per channel.</li>
+      with its title, description and tags. Once per day per channel, across the four channels
+      the Operator owns.</li>
 </ul>
 <p>The only YouTube data the API Client ever receives is the response to its own upload, which
-identifies the video just created and the channel it was posted to. Because both of the Operator's
+identifies the video just created and the channel it was posted to. Because all of the Operator's
 channels sit under one Google Account, the API Client records that channel ID and refuses any
 later upload that would land on a different channel than the one expected.</p>
 <p>The API Client does not read, display, download, store or process YouTube content, channels,
